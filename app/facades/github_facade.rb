@@ -1,10 +1,11 @@
 class GithubFacade
-  attr_reader :render, :render_followers
+  attr_reader :render, :render_followers, :render_following
   def initialize(user)
     @user = user
     if user.token != nil
       @render = "partials/github_repos"
       @render_followers = "partials/github_followers"
+      @render_following = "partials/github_following"
     else
       @render = "partials/github_auth_prompt"
     end
@@ -25,6 +26,13 @@ class GithubFacade
     followers = GithubService.new(@user).follower_info
     followers.map do |follower|
       GithubFollower.new(follower)
+    end
+  end
+
+  def following
+    following = GithubService.new(@user).following_info
+    following.map do |following|
+      GithubFollowing.new(following)
     end
   end
 end
