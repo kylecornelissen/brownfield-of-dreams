@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user can see github followers' do
   before :each do
     @user = create(:user)
-    @user_with_token = create(:user, token: "a343434234324t3r")
+    @user_with_token = create(:user, token: ENV["github-test-key"])
   end
 
   scenario 'it can login and see followers with token' do
@@ -16,9 +16,9 @@ feature 'user can see github followers' do
       expect(page).to have_css('#github_followers')
 
       within('#github_followers') do
-        page.assert_selector('.follower', count: 5)
+        page.assert_selector('.follower')
         within(first('.follower')) do
-          expect(page).to have_content('test_user/follower1')
+          expect(page).to have_content('bplantico')
         end
       end
     end
