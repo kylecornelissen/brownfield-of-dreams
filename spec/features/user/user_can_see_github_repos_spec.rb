@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user can see github repos' do
   before :each do
     @user = create(:user)
-    @user_with_token = create(:user, token: "a343434234324t3r")
+    @user_with_token = create(:user, token: ENV["github-test-key"])
   end
 
   scenario 'it can login and see repos with token' do
@@ -18,7 +18,7 @@ feature 'user can see github repos' do
       within('#github') do
         page.assert_selector('.repo', count: 5)
         within(first('.repo')) do
-          expect(page).to have_content('test_user/repo1')
+          expect(page).to have_content('alexander-mathieu/little_shop_v2')
         end
       end
     end
