@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user can see github following' do
   before :each do
     @user = create(:user)
-    @user_with_token = create(:user, token: ENV["github-test-key"])
+    @user_with_token = create(:user, token: 'abc123')
   end
 
   scenario 'it can login and see following with token' do
