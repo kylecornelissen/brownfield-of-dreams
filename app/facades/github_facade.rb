@@ -25,14 +25,14 @@ class GithubFacade
   def followers
     followers = GithubService.new(@user).follower_info
     followers.map do |follower|
-      GithubFollower.new(follower)
+      GithubHandle.new(follower)
     end
   end
 
   def following
     following = GithubService.new(@user).following_info
     following.map do |following|
-      GithubFollowing.new(following)
+      GithubHandle.new(following)
     end
   end
 end
