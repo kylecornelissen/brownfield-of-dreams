@@ -10,6 +10,7 @@
     <% if current_user %>
       <div class="align-middle table-cell p3">
         <%= link_to "Profile", dashboard_path %>
+        <%= link_to "Sign Out", logout_path, method: 'delete' %>
       </div>
       <% if current_user.admin? %>
       <div class="align-middle table-cell p3">

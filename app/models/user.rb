@@ -16,4 +16,12 @@ class User < ApplicationRecord
                        token: auth_data.credentials.token}
     user.save
   end
+
+  def bookmarks
+    Video.joins(:user_videos)
+      .select('video.*')
+        .where(user_videos: {id: self.id})
+        .group()
+        .order()
+  end
 end
