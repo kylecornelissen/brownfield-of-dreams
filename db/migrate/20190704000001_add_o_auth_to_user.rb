@@ -3,5 +3,6 @@ class AddOAuthToUser < ActiveRecord::Migration[5.2]
     add_column :users, :uid, :string
     add_column :users, :username, :string
     add_column :users, :token, :string
+    add_column :users, :uid, :string
   end
 end

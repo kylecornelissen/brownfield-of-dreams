@@ -16,4 +16,17 @@ class User < ApplicationRecord
                        token: auth_data.credentials.token}
     user.save
   end
+
+  def potential_friend(current_user, uid)
+    user = User.find_by(uid: uid)
+    if user
+      if !Friendship.where(user_id: current_user.id, friend_id: user.id).exists?
+        true
+      else
+        false
+      end
+    else
+      false
+    end
+  end
 end
