@@ -9,6 +9,14 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+    <% tutorials.each do |tutorial| %>
+      <h5><%= tutorial.title %></h5>
+      <ul>
+      <% tutorial.videos.each do |video| %>
+        <li><%= link_to video.title, tutorial_path(id: tutorial.id, video_id: video.id) %></li>
+      <% end %>
+      </ul>
+    <% end %>
   </section>
   <section>
     <%= render partial: facade.render, locals: {facade: facade} %>
