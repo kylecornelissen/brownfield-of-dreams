@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   def show
-    render locals: {facade: GithubFacade.new(current_user), bookmarks: User.bookmarks(current_user.id)}
+    render locals: {facade: GithubFacade.new(current_user), tutorials: current_user.bookmarks}
   end
 
   def new

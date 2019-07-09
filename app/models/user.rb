@@ -18,10 +18,8 @@ class User < ApplicationRecord
   end
 
   def bookmarks
-    Video.joins(:user_videos)
-      .select('video.*')
-        .where(user_videos: {id: self.id})
-        .group()
-        .order()
+    Tutorial.includes(videos: :user_videos)
+      .where(user_videos: {id: self.id})
+      .order('videos.position ASC')
   end
 end
