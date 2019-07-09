@@ -2,7 +2,12 @@
   <h1>GitHub Followers</h1>
   <ul>
     <% facade.followers.each do |follower| %>
-      <li class="follower"><%= link_to follower.login_name, "#{follower.path}" %></li>
+      <li class="follower">
+        <%= link_to follower.login_name, "#{follower.path}" %>
+        <% if current_user.potential_friend(follower.uid) %>
+          <%= button_to "Add Friend", add_friend_path(friend_id: follower.uid), method: :post, class: 'btn' %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </div>
