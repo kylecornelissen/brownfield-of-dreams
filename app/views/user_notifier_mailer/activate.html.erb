@@ -1,0 +1,5 @@
+Hello <%= @user.first_name %>,
+
+Click the link to activate your account.
+
+<%= link_to 'Activate', "https://quiet-atoll-23820.herokuapp.com/activate/#{@user.id}" %>
