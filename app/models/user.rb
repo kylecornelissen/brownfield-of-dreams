@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   def bookmarks
     Tutorial.includes(videos: :user_videos)
-      .where(user_videos: {id: self.id})
+      .where(user_videos: {user_id: self.id})
       .order('videos.position ASC')
   end
 end
