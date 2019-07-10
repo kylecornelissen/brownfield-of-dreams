@@ -2,7 +2,11 @@
 
 class UsersController < ApplicationController
   def show
-    render locals: {facade: GithubFacade.new(current_user)}
+    if current_user
+      render locals: {facade: GithubFacade.new(current_user)}
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -21,6 +25,12 @@ class UsersController < ApplicationController
       flash[:error] = 'Username already exists'
       render :new
     end
+  end
+
+  def update
+    User.find(params[:id]).update(activated: true)
+    flash[:success] = "#{user.email} is activated"
+    redirect_to dashboard_path
   end
 
   private
