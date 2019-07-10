@@ -24,4 +24,18 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'instance methods' do
+    it '#potential_friend' do
+      host = create(:user)
+      u1 = create(:user, uid: '12345')
+      u2 = create(:user, uid: '24680')
+
+      Friendship.create!(user_id: host.id, friend_id: u2.id)
+
+      expect(host.potential_friend('12345')).to eq(true)
+      expect(host.potential_friend('24680')).to eq(false)
+      expect(host.potential_friend('00000')).to eq(false)
+    end
+  end
 end

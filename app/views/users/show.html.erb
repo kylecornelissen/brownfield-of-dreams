@@ -11,6 +11,14 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <section>
+    <h1>Friends</h1>
+    <ul>
+    <% current_user.friends.each do |friend| %>
+      <li><%= friend.first_name %> <%= friend.last_name %></li>
+    <% end %>
+    </ul>
+  </section>
+  <section>
     <%= render partial: facade.render, locals: {facade: facade} %>
   </section>
   <section>

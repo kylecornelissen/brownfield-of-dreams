@@ -46,4 +46,6 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only: %i[create destroy]
+
+  post '/friend', to: 'friendships#create', as: :add_friend
 end
