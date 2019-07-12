@@ -11,6 +11,9 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <section>
+    <%= button_to 'Send Invite', invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" if current_user.token %>
+  </section>
+  <section>
     <h1>Friends</h1>
     <ul>
     <% current_user.friends.each do |friend| %>
