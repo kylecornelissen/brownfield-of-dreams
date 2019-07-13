@@ -28,7 +28,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    User.find(params[:id]).update(activated: true)
+    user = User.find(params[:id])
+    user.update(activated: true)
     flash[:success] = "#{user.email} is activated"
     redirect_to dashboard_path
   end
