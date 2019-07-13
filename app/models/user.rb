@@ -19,6 +19,12 @@ class User < ApplicationRecord
     user.save
   end
 
+  def bookmarks
+    Tutorial.includes(videos: :user_videos)
+      .where(user_videos: {user_id: self.id})
+      .order('videos.position ASC')
+  end
+
   def potential_friend(uid)
     user = User.find_by(uid: uid)
     if user
