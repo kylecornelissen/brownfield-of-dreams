@@ -4,7 +4,7 @@ class UserFacade
   attr_reader :render, :render_follows
   def initialize(user)
     @user = user
-    if user.token != nil
+    if !user.token.nil?
       @render = 'partials/github_repos'
       @render_follows = 'partials/github_follows'
     else
