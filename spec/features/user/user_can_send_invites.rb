@@ -12,12 +12,12 @@ feature 'user can send invites' do
     end
 
     VCR.use_cassette('services/github_email_request') do
-      click_button 'Send Invite'
+      click_button 'Invite a Friend'
 
       expect(current_path).to eq('/invite')
 
       fill_in 'Handle', with: 'CosmicSpagetti'
-      click_on 'Send Invite'
+      click_on 'Invite a Friend'
 
       expect(current_path).to eq('/dashboard')
       expect(page).to have_content('Successfully sent invite!')
@@ -33,12 +33,12 @@ feature 'user can send invites' do
     end
 
     VCR.use_cassette('services/github_email_request_fail') do
-      click_button 'Send Invite'
+      click_button 'Invite a Friend'
 
       expect(current_path).to eq('/invite')
 
       fill_in 'Handle', with: 'kylecornelissen'
-      click_on 'Send Invite'
+      click_on 'Invite a Friend'
 
       expect(current_path).to eq('/dashboard')
       expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
