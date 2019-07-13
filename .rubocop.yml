@@ -8,7 +8,6 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
-
 Metrics/LineLength:
   Enabled: false
 Metrics/BlockLength:
@@ -16,4 +15,10 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Enabled: false
 Style/ClassAndModuleChildren:
+  Enabled: false
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+Metrics/AbcSize:
   Enabled: false
