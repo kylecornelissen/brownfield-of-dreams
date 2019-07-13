@@ -5,8 +5,8 @@ class UserFacade
   def initialize(user)
     @user = user
     if user.token != nil
-      @render = "partials/github_repos"
-      @render_follows = "partials/github_follows"
+      @render = 'partials/github_repos'
+      @render_follows = 'partials/github_follows'
     else
       @render = 'partials/github_auth_prompt'
     end
