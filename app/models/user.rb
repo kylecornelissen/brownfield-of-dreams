@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   validates :email, uniqueness: true, presence: true
   validates_presence_of :first_name
@@ -21,5 +23,18 @@ class User < ApplicationRecord
     Tutorial.includes(videos: :user_videos)
       .where(user_videos: {user_id: self.id})
       .order('videos.position ASC')
+  end
+
+  def potential_friend(uid)
+    user = User.find_by(uid: uid)
+    if user
+      if !Friendship.where(user_id: self.id, friend_id: user.id).exists?
+        true
+      else
+        false
+      end
+    else
+      false
+    end
   end
 end

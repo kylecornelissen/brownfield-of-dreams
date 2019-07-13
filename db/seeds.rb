@@ -126,3 +126,8 @@ null_tutorial = Tutorial.create! null_tutorial_data
 
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password: 'password', role: :admin)
 User.create!(email: 'doug@example.com', first_name: 'Doug', last_name: 'O\'Doug', password: 'password', role: :default)
+User.create!(email: 'kyle@example.com', first_name: 'Kyle', last_name: 'Corndog', password: 'password', role: :default)
+User.create!(email: 'aurie@example.com', first_name: 'Aurie', last_name: 'G', password: 'password', role: :default, uid: 5474693)
+User.create!(email: 'brian@example.com', first_name: 'Brian', last_name: 'Planthead', password: 'password', role: :default, uid: 43261385)
+User.create!(email: 'stella@example.com', first_name: 'Stella', last_name: 'BoBella', password: 'password', role: :default, uid: 43945779)
+User.create!(email: 'andrew@example.com', first_name: 'Andrew', last_name: 'Gandalf', password: 'password', role: :default, uid: 44850604)

@@ -15,6 +15,10 @@ class GithubService
     JSON.parse(conn.get('/user/following').body, symbolize_names: true)
   end
 
+  def get_email(handle)
+    JSON.parse(conn.get("/users/#{handle}").body)['email']
+  end
+
   def conn
     Faraday.new(url: 'https://api.github.com') do |f|
       f.adapter Faraday.default_adapter

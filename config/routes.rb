@@ -38,9 +38,15 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create update edit]
 
+  get '/activate/:id', to: 'users#update'
+  get '/invite', to: 'invite#new'
+  post '/invite', to: 'invite#create'
+
   resources :tutorials, only: %i[show index] do
     resources :videos, only: %i[show index]
   end
 
   resources :user_videos, only: %i[create destroy]
+
+  post '/friend', to: 'friendships#create', as: :add_friend
 end

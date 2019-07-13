@@ -1,0 +1,7 @@
+<%= form_tag '/invite' do %>
+  <div>
+    <%= label_tag 'handle', 'Github Handle' %>
+    <%= text_field_tag 'handle' %></div>
+
+  <div><%= submit_tag 'Send Invite' %></div>
+<% end %>
