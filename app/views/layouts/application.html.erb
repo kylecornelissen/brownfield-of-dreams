@@ -14,11 +14,14 @@
     <%= render 'partials/nav' %>
 
     <main class="px4">
-      <div class="flash-message">
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, class: name %>
-        <% end %>
-      </div>
+      <% flash.each do |name, msg| %>
+        <div class="flash-message">
+          <div class=<%= "#{name}-bar" %>></div>
+          <div class=<%= name %>>
+            <em><%= msg %></em>
+          </div>
+        </div>
+      <% end %>
 
       <%= yield %>
     </main>

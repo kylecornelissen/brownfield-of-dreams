@@ -1,0 +1,26 @@
+.flash-message {
+  margin: auto;
+  margin-top: 0.5rem;
+  width: 75%;
+  height: 52px;
+}
+
+.flash-message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.success {
+  float: left;
+  padding: 8px 16px 8px 16px;
+  font-size: 24px;
+  background: #aeeaea;
+}
+
+.success-bar {
+  height: 100%;
+  float: left;
+  width: 0.5rem;
+  background-color: #39CCCC;
+}
