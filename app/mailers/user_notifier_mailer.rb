@@ -4,8 +4,10 @@ class UserNotifierMailer < ApplicationMailer
     mail(to: user.email, subject: "Please Activate Your Account.")
   end
 
-  def invite(user, invite_email)
+  def invite(user, invite_email, invite_handle)
     @user = user
-    mail(to: invite_email, subject: "You've been invited!")
+    @invite_email = invite_email
+    @invite_handle = invite_handle
+    mail(to: invite_email, subject: "#{@invite_handle}, You've been invited!")
   end
 end
