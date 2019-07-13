@@ -1,4 +1,4 @@
-class GithubFacade
+class UserFacade
   attr_reader :render, :render_followers, :render_following
   def initialize(user)
     @user = user
@@ -9,6 +9,10 @@ class GithubFacade
     else
       @render = "partials/github_auth_prompt"
     end
+  end
+
+  def tutorials
+    @user.bookmarks    
   end
 
   def repos(limit = nil)

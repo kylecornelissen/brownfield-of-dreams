@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   def show
     if current_user
-      render locals: {facade: GithubFacade.new(current_user), tutorials: current_user.bookmarks}
+      render locals: {facade: UserFacade.new(current_user)}
     else
       redirect_to root_path
     end
