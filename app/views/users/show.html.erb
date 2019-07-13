@@ -1,7 +1,6 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
-  <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
     <li> Name: <%= current_user.first_name %> <%= current_user.last_name %> </li>
@@ -19,15 +18,14 @@
     <% end %>
   </section>
   <section>
-    <%= button_to 'Send Invite', invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" if current_user.token %>
-  </section>
-  <section>
     <h1>Friends</h1>
     <ul>
     <% current_user.friends.each do |friend| %>
       <li><%= friend.first_name %> <%= friend.last_name %></li>
     <% end %>
     </ul>
+
+    <%= button_to 'Invite a Friend', invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" if current_user.token %>
   </section>
   <section>
     <%= render partial: facade.render, locals: {facade: facade} %>
