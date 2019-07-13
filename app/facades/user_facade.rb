@@ -1,18 +1,17 @@
 class UserFacade
-  attr_reader :render, :render_followers, :render_following
+  attr_reader :render, :render_follows
   def initialize(user)
     @user = user
     if user.token != nil
       @render = "partials/github_repos"
-      @render_followers = "partials/github_followers"
-      @render_following = "partials/github_following"
+      @render_follows = "partials/github_follows"
     else
       @render = "partials/github_auth_prompt"
     end
   end
 
   def tutorials
-    @user.bookmarks    
+    @user.bookmarks
   end
 
   def repos(limit = nil)
@@ -26,17 +25,10 @@ class UserFacade
     end
   end
 
-  def followers
-    followers = GithubService.new(@user).follower_info
-    followers.map do |follower|
-      GithubHandle.new(follower)
-    end
-  end
-
-  def following
-    following = GithubService.new(@user).following_info
-    following.map do |following|
-      GithubHandle.new(following)
+  def follows(followers_or_following)
+    follows = GithubService.new(@user).follow_info(followers_or_following)
+    follows.map do |follow|
+      GithubHandle.new(follow)
     end
   end
 end
