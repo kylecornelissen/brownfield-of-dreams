@@ -23,6 +23,9 @@ class Admin::VideosController < Admin::BaseController
       flash[:error] = 'Unable to create video.'
     end
 
+    redirect_to edit_admin_tutorial_path(id: tutorial.id)
+  end
+
   private
 
   def video_params
