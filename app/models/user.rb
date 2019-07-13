@@ -13,22 +13,22 @@ class User < ApplicationRecord
 
   def self.authenticate(id, auth_data)
     user = User.find(id)
-    user.attributes = {uid: auth_data.uid,
-                       username: auth_data.info.nickname,
-                       token: auth_data.credentials.token}
+    user.attributes = { uid: auth_data.uid,
+                        username: auth_data.info.nickname,
+                        token: auth_data.credentials.token }
     user.save
   end
 
   def bookmarks
     Tutorial.includes(videos: :user_videos)
-      .where(user_videos: {user_id: self.id})
-      .order('videos.position ASC')
+            .where(user_videos: { user_id: id })
+            .order('videos.position ASC')
   end
 
   def potential_friend(uid)
     user = User.find_by(uid: uid)
     if user
-      if !Friendship.where(user_id: self.id, friend_id: user.id).exists?
+      if !Friendship.where(user_id: id, friend_id: user.id).exists?
         true
       else
         false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'user can see github repos' do
@@ -7,7 +9,7 @@ feature 'user can see github repos' do
   end
 
   scenario 'it can login and see repos with token' do
-    VCR.use_cassette("services/github_service") do
+    VCR.use_cassette('services/github_service') do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_with_token)
 
       visit '/dashboard'

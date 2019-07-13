@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def update
-    user = User.authenticate(session[:user_id], request.env["omniauth.auth"])
+    User.authenticate(session[:user_id], request.env['omniauth.auth'])
     redirect_to dashboard_path
   end
 

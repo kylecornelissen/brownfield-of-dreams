@@ -5,7 +5,7 @@ class Video < ApplicationRecord
   has_many :users, through: :user_videos
   belongs_to :tutorial
 
-  validates :position, numericality: {only_integer: true}
+  validates :position, numericality: { only_integer: true }
   # validates :position, numericality: {only_integer: true}, if: :next_in_line
 
   # def next_in_line

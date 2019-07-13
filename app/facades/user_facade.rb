@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class UserFacade
   attr_reader :render, :render_follows
   def initialize(user)
     @user = user
-    if user.token != nil
-      @render = "partials/github_repos"
-      @render_follows = "partials/github_follows"
+    if !user.token.nil?
+      @render = 'partials/github_repos'
+      @render_follows = 'partials/github_follows'
     else
-      @render = "partials/github_auth_prompt"
+      @render = 'partials/github_auth_prompt'
     end
   end
 
@@ -15,11 +17,11 @@ class UserFacade
   end
 
   def repos(limit = nil)
-    if limit
-      repos = GithubService.new(@user).repo_info.take(limit)
-    else
-      repos = GithubService.new(@user).repo_info
-    end
+    repos = if limit
+              GithubService.new(@user).repo_info.take(limit)
+            else
+              GithubService.new(@user).repo_info
+            end
     repos.map do |repo|
       GithubRepo.new(repo)
     end

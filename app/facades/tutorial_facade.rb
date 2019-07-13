@@ -6,8 +6,8 @@ class TutorialFacade < SimpleDelegator
     @video_id = video_id
   end
 
-  def has_videos?
-    return !videos.empty?
+  def videos?
+    !videos.empty?
   end
 
   def current_video

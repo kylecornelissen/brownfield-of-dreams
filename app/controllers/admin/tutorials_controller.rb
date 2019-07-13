@@ -11,10 +11,10 @@ class Admin::TutorialsController < Admin::BaseController
                             description: params_tutorial[:description],
                             thumbnail: params_tutorial[:thumbnail])
     if tutorial.save
-      flash[:success] = "Successfully created tutorial."
+      flash[:success] = 'Successfully created tutorial.'
       redirect_to tutorial_path(tutorial)
     else
-      flash[:error] = "There was a problem creating the tutorial."
+      flash[:error] = 'There was a problem creating the tutorial.'
       redirect_to new_admin_tutorial_path
     end
   end
@@ -25,9 +25,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   def update
     tutorial = Tutorial.find(params[:id])
-    if tutorial.update(tutorial_params)
-      flash[:success] = "#{tutorial.title} tagged!"
-    end
+    flash[:success] = "#{tutorial.title} tagged!" if tutorial.update(tutorial_params)
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 

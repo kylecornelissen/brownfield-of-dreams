@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'user can see friends' do
   before :each do
     @user = create(:user, token: 'abc123')
-    @brian_user = create(:user, uid: 43261385)
-    @stella_user = create(:user, uid: 43945779)
-    @andrew_user = create(:user, uid: 44850604)
+    @brian_user = create(:user, uid: 43_261_385)
+    @stella_user = create(:user, uid: 43_945_779)
+    @andrew_user = create(:user, uid: 44_850_604)
   end
 
   scenario 'it can login and see add friend button by authenticated users who are not yet friends' do
-    VCR.use_cassette("services/github_service") do
+    VCR.use_cassette('services/github_service') do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
       visit '/dashboard'
@@ -38,29 +40,29 @@ feature 'user can see friends' do
   end
 
   scenario 'it can add authenticated users as friends' do
-    VCR.use_cassette("services/github_service") do
+    VCR.use_cassette('services/github_service') do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
       visit '/dashboard'
     end
-      expect(current_path).to eq('/dashboard')
+    expect(current_path).to eq('/dashboard')
 
-      within('#github_followers') do
-        within(first('.follower')) do
-          expect(page).to have_content('bplantico')
-          expect(page).to have_button('Add Friend')
-          VCR.use_cassette("services/github_service") do
-          click_button "Add Friend"
-          end
-        end
-      end
-
-      expect(current_path).to eq('/dashboard')
-      within('#github_followers') do
-        within(first('.follower')) do
-          expect(page).to have_content('bplantico')
-          expect(page).to_not have_button('Add Friend')
+    within('#github_followers') do
+      within(first('.follower')) do
+        expect(page).to have_content('bplantico')
+        expect(page).to have_button('Add Friend')
+        VCR.use_cassette('services/github_service') do
+          click_button 'Add Friend'
         end
       end
     end
+
+    expect(current_path).to eq('/dashboard')
+    within('#github_followers') do
+      within(first('.follower')) do
+        expect(page).to have_content('bplantico')
+        expect(page).to_not have_button('Add Friend')
+      end
+    end
+  end
 end
