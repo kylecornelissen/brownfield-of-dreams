@@ -5,5 +5,7 @@ class Tutorial < ApplicationRecord
   acts_as_taggable_on :tags, :tag_list
   accepts_nested_attributes_for :videos
 
+  validates_presence_of :title, :description, :thumbnail
+
   scope :no_classroom, -> {where(classroom: true)}
 end
