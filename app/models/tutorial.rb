@@ -7,5 +7,5 @@ class Tutorial < ApplicationRecord
 
   validates_presence_of :title, :description, :thumbnail
 
-  scope :no_classroom, -> {where(classroom: true)}
+  scope :no_classroom, -> { where(classroom: true) }
 end

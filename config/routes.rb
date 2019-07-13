@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
 
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
-  
+
   # Users
   get '/register', to: 'users#new'
   get '/dashboard', to: 'users#show'
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'sessions#update'
-  
+
   # Email
   get '/activate/:id', to: 'users#update'
   get '/invite', to: 'invite#new'

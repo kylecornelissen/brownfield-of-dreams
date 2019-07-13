@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GithubHandle
   attr_reader :path, :login_name, :uid
   def initialize(data = {})

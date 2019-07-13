@@ -8,7 +8,6 @@ describe 'vister can create an account', :js do
     first_name = 'Jim'
     last_name = 'Bob'
     password = 'password'
-    password_confirmation = 'password'
 
     visit '/'
 
@@ -30,9 +29,8 @@ describe 'vister can create an account', :js do
 
     expect(current_path).to eq(dashboard_path)
 
-
     expect(page).to have_content("Logged in as #{email}")
-    expect(page).to have_content("This account has not yet been activated. Please check your email.")
+    expect(page).to have_content('This account has not yet been activated. Please check your email.')
     expect(page).to have_content(email)
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)

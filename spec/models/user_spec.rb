@@ -28,10 +28,10 @@ RSpec.describe User, type: :model do
   describe 'instance methods' do
     it '#potential_friend' do
       host = create(:user)
-      u1 = create(:user, uid: '12345')
-      u2 = create(:user, uid: '24680')
+      create(:user, uid: '12345')
+      user = create(:user, uid: '24680')
 
-      Friendship.create!(user_id: host.id, friend_id: u2.id)
+      Friendship.create!(user_id: host.id, friend_id: user.id)
 
       expect(host.potential_friend('12345')).to eq(true)
       expect(host.potential_friend('24680')).to eq(false)

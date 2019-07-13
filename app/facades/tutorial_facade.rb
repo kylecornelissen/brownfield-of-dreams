@@ -7,7 +7,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def has_videos?
-    return !videos.empty?
+    !videos.empty?
   end
 
   def current_video
