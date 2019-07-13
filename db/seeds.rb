@@ -116,5 +116,13 @@ m3_tutorial.videos.create!(
   'position' => 6
 )
 
+null_tutorial_data = {
+  'title' => 'Null',
+  'description' => 'Is empty',
+  'thumbnail' => 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg',
+  'classroom' => false
+}
+null_tutorial = Tutorial.create! null_tutorial_data
+
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password: 'password', role: :admin)
 User.create!(email: 'doug@example.com', first_name: 'Doug', last_name: 'O\'Doug', password: 'password', role: :default)

@@ -14,8 +14,4 @@ export default class extends Controller {
         flash.inner
       });
   }
-
-  // needsLogin(event) {
-  //   this.buttonTarget 
-  // }
 }
