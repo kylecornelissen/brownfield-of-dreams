@@ -1,0 +1,26 @@
+<div id="github_followers">
+  <h1>GitHub Followers</h1>
+  <ul>
+    <% facade.follows("followers").each do |follower| %>
+      <li class="follower">
+        <%= link_to follower.login_name, "#{follower.path}" %>
+        <% if current_user.potential_friend(follower.uid) %>
+          <%= button_to "Add Friend", add_friend_path(uid: follower.uid), method: :post, class: 'btn' %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div id="github_following">
+  <h1>GitHub Following</h1>
+  <ul>
+    <% facade.follows("following").each do |following| %>
+      <li class="following">
+        <%= link_to following.login_name, "#{following.path}" %>
+        <% if current_user.potential_friend(following.uid) %>
+          <%= button_to "Add Friend", add_friend_path(uid: following.uid), method: :post, class: 'btn' %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
