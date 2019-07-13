@@ -7,12 +7,8 @@ class GithubService
     JSON.parse(conn.get('/user/repos').body, symbolize_names: true)
   end
 
-  def follower_info
-    JSON.parse(conn.get('/user/followers').body, symbolize_names: true)
-  end
-
-  def following_info
-    JSON.parse(conn.get('/user/following').body, symbolize_names: true)
+  def follow_info(followers_or_following)
+    JSON.parse(conn.get("/user/#{followers_or_following}").body, symbolize_names: true)
   end
 
   def get_email(handle)

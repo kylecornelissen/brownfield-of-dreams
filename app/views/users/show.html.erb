@@ -33,9 +33,6 @@
     <%= render partial: facade.render, locals: {facade: facade} %>
   </section>
   <section>
-    <%= render partial: facade.render_followers, locals: {facade: facade} if facade.render_followers != nil %>
-  </section>
-  <section>
-    <%= render partial: facade.render_following, locals: {facade: facade} if facade.render_followers != nil %>
+    <%= render partial: facade.render_follows, locals: {facade: facade} if facade.render_follows != nil %>
   </section>
 </section>
