@@ -1,8 +1,0 @@
-<div id="github_following">
-  <h1>GitHub Following</h1>
-  <ul>
-    <% facade.following.each do |following| %>
-      <li class="following"><%= link_to following.login_name, "#{following.path}" %></li>
-    <% end %>
-  </ul>
-</div>
